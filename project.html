@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PRAKRUTI SARADVA - Portfolio</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+     color:   #96c3f0;
+      line-height: 1.8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header & Navigation */
+    header {
+      background-color: #34495e;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: #ecf0f1;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      position: relative;
+    }
+    nav a:hover,
+    nav a.active {
+      background-color: #2980b9;
+      box-shadow: 0 4px 15px rgba(41, 128, 185, 0.4);
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background-color: #3498db;
+      left: 50%;
+      bottom: -6px;
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Container and sections */
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 2rem auto 3rem;
+      background-color: #f9f7f7;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    section {
+      padding: 2rem 0;
+      border-bottom: 1px solid #cfe5f5;
+    }
+    section:last-child {
+      border-bottom: none;
+    }
+    h2 {
+      color: #96c3f0;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 1rem;
+      animation: fadeSlideUp 1s ease forwards;
+      opacity: 0;
+      animation-delay: 0.2s;
+    }
+
+    /* Intro section */
+    .intro {
+      text-align: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #dce3e8;
+    }
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #2980b9;
+      margin: 0 auto 1rem;
+      box-shadow: 0 6px 15px rgba(41, 128, 185, 0.3);
+      animation: photoFadeScale 1.5s ease forwards;
+      opacity: 0;
+    }
+    h1 {
+      color: #94bde6;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      animation: fadeSlideUp 1s ease forwards;
+      opacity: 0;
+      animation-delay: 0.4s;
+    }
+    .tagline {
+      color: #95ccd0;
+      font-style: italic;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      animation: fadeSlideUp 1.2s ease forwards;
+      opacity: 0;
+      animation-delay: 0.6s;
+    }
+    .intro p {
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeSlideUp 1.4s ease forwards;
+      opacity: 0;
+      animation-delay: 0.8s;
+    }
+
+    /* Skills list */
+    .skills-list {
+      list-style-type: disc;
+      max-width: 600px;
+      margin: 1rem auto 2rem auto;
+      padding-left: 1.3rem;
+      font-size: 1.05rem;
+      color: #94bde6;
+      line-height: 1.6;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      animation-delay: 1s;
+    }
+
+    /* Projects */
+    .project {
+      max-width: 650px;
+      margin: 1rem auto 2rem auto;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #dce3e8;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+    .project:last-child {
+      border-bottom: none;
+    }
+    .project h3 {
+      color: #94bde6;
+      margin-bottom: 0.3rem;
+    }
+    .project p {
+      color: #94bde6;
+      
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .project a {
+      font-weight: 600;
+    }
+    .project:nth-child(1) {
+      animation-delay: 1.1s;
+      opacity: 1;
+    }
+    .project:nth-child(2) {
+      animation-delay: 1.3s;
+      opacity: 1;
+    }
+    .project:nth-child(3) {
+      animation-delay: 1.5s;
+      opacity: 1;
+    }
+
+    /* Certificate embed frame */
+    iframe.certificate-frame {
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      min-height: 550px;
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      animation-delay: 1s;
+      max-width: 700px;
+      display: block;
+      margin: 1rem auto;
+    }
+
+    /* Contact section */
+    .contact-info {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #94bde6;
+      
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+      animation-delay: 1.2s;
+    }
+    .contact-info a {
+      font-weight: 600;
+    }
+    .contact-info a:hover {
+      color: #94bde6;
+      
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #8bbdc1;
+      border-top: 1px solid #0c1216;
+      background-color: #0e0c0c;
+    }
+    footer a {
+      color: #88b2ce;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes photoFadeScale {
+      from {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      main {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+      .profile-photo {
+        width: 130px;
+        height: 130px;
+      }
+      .skills-list, .project {
+        max-width: 100%;
+      }
+      iframe.certificate-frame {
+        min-height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#skills-projects">Skills & Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Home / Intro -->
+    <section id="home" class="intro">
+      <img src="WhatsApp Image 2025-11-24 at 13.57.04_83d3cd80.jpg" alt="Your Name" class="profile-photo" />
+      <h1>KRISHNNA KAVAR</h1>
+      <p class="tagline">Aspiring Embedded SOFTWARE Engineer</p>
+      <p>I'm KRISHNNA KAVAR, a passionate CSE student at CSPIT Charusat. I focus on crafting smooth, aesthetic, and functional web experiences. I enjoy turning ideas into real, working web projects.</p>
+    </section>
+
+    <!-- Skills & Projects -->
+    <section id="skills-projects">
+      <h2>Technical Skills</h2>
+      <ul class="skills-list">
+        <li>Embedded C programming</li>
+        <li>Arduino & ESP32 microcontroller programming</li>
+        <li>Robotics control & PID algorithms</li>
+        <li>Git & GitHub </li>
+      </ul>
+
+      
+
+    
+
+      <article class="project">
+        <h3>Text Encryption Program in C</h3>
+        <p>Implemented Caesar cipher encryption and decryption algorithms with command-line interaction in C.</p>
+        <a href="https://github.com/25cs092prakruti/newproject/blob/main/new.c" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+      </article>
+    </section>
+
+    <!-- Certificates -->
+<section id="certificates">
+  <h2>Certificates</h2>
+
+  <div class="certificate-container" 
+       style="display:flex; flex-direction:column; align-items:center; gap:1rem;">
+
+    <!-- Certificate Image -->
+    <img 
+      src="WhatsApp Image 2025-11-24 at 13.50.02_6a64d193.jpg" 
+      alt="Certificate" 
+      class="certificate-frame"
+      style="width:100%; max-width:700px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.15);" 
+    />
+
+    <p style="text-align:center; margin:0;">
+      If the image does not load, 
+      <a href="WhatsApp Image 2025-11-23 at 11.31.53_3ef24091.jpg" target="_blank" rel="noopener noreferrer">
+        click here to view the certificate
+      </a>.
+    </p>
+
+  </div>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <!-- Replace YOUR_FORM_ID with the actual Google Form embed ID -->
+      
+      <div class="contact-info" style="margin-top:1rem;">
+        <p>Or email me at: <a href="25CS031@.edu.charusat.org">25CS031@charusat.edu.in</a></p>
+        
+        <p>Find me on LinkedIn: <a href="https://www.linkedin.com/in/krishna-kavar-36658a372?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer">krishna
+           </a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Your Name | <a href="https://github.com/krishnaX031/github" target="_blank" rel="noopener noreferrer">View on GitHub</a></p>
+  </footer>
+
+  <script>
+    // Scroll spy & active nav highlight
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 70;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
